@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+/* Semantic colour roles. Defaults are the dark brand theme (from the Claude Design export);
+   the light block below swaps the same variables, so every utility re-themes without `dark:` classes. */
+@theme {
+  --color-orange: #ec5b25; /* brand orange: button fills, borders, SVG shapes */
+  --color-accent: #ec5b25; /* SMALL orange text (labels, links); large text uses --color-orange */
+  --color-surface: #0a0a0b;
+  --color-raised: #141416;
+  --color-sunken: #000000;
+  --color-line: #2b2b2d;
+  --color-muted: #bdbdbd;
+  --color-fg: #ffffff;
+}
+
+/* Dark is the brand default, even on light-mode devices; light only when chosen with the toggle (data-theme). */
+:root {
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-accent: #0a0a0b; /* brand orange on white is 3.5:1, too low for small text: labels go near-black */
+  --color-surface: #ffffff;
+  --color-raised: #f4f4f2; /* design token --paper */
+  --color-sunken: #ebebe8;
+  --color-line: #d6d6d2;
+  --color-muted: #55555a;
+  --color-fg: #0a0a0b;
+}
+
+/* `light:` variant, mirroring the light-theme selector above (toggle icon, header logo). */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* Khmer glyphs aren't in Oswald, so the browser falls through to Koulen per glyph;
+   Koulen's Khmer file only downloads when Khmer display text is on the page. */
+@theme inline {
+  --font-display: var(--font-oswald), var(--font-koulen), "Arial Narrow", sans-serif;
+  --font-body: var(--font-kantumruy), "Noto Sans Khmer", sans-serif;
+  --font-khmer: var(--font-koulen), var(--font-kantumruy), sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px; /* sticky header */
+  }
+  body {
+    margin: 0;
+    background: var(--color-surface);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 28px;
+  }
+  a {
+    color: var(--color-accent);
+  }
+  a:hover {
+    color: var(--color-fg);
+  }
+  /* Skip layout/paint of off-screen sections until scrolled near: the biggest main-thread cost on long pages. */
+  main > section:not(:first-child) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 3px;
+  }
+  /* Khmer stacks subscript consonants: tight leading clips them, letter-spacing splits clusters. */
+  :lang(km) {
+    letter-spacing: 0 !important;
+  }
+  :lang(km) :is(h1, h2, h3, strong) {
+    line-height: 1.5 !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* A subtree that stays dark in both themes (the hero sits on a dark photo). Mirrors the dark defaults above. */
+@utility force-dark {
+  color-scheme: dark;
+  --color-accent: #ec5b25;
+  --color-surface: #0a0a0b;
+  --color-raised: #141416;
+  --color-sunken: #000000;
+  --color-line: #2b2b2d;
+  --color-muted: #bdbdbd;
+  --color-fg: #ffffff;
+}
+
+@utility wrap {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 48rem) {
+    padding-inline: 32px;
+  }
+}
+
+@utility section-y {
+  padding-block: 64px;
+  @media (width >= 48rem) {
+    padding-block: 96px;
+  }
+}
+
+@utility eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--color-accent);
+}
+
+@utility h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding-inline: 28px;
+  background: var(--color-orange);
+  /* White on brand orange is 3.5:1: passes AA only as "large text" (bold >= 18.66px), hence 19px. */
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:hover {
+    background: var(--color-fg);
+    color: var(--color-surface);
+  }
+}
+
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding-inline: 28px;
+  border: 1px solid var(--color-muted);
+  color: var(--color-fg);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  &:hover {
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+  }
+}
+
+@utility placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  background: var(--color-raised);
+  border: 1px dashed var(--color-line);
+  color: var(--color-muted);
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+}
