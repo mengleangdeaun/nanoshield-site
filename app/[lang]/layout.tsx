@@ -8,11 +8,12 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { businessSchema } from "@/lib/seo";
 import "../globals.css";
 
-// Self-hosted at build time (no Google request at runtime). `subsets` = what gets preloaded;
-// the Khmer faces are still declared and load on demand via unicode-range.
+// Latin faces: self-hosted by next/font at build time (no Google request at runtime), preloaded on every page.
+// Khmer faces live in public/fonts and are preloaded per locale below (see globals.css).
 const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", display: "optional" });
 const kantumruy = Kantumruy_Pro({ subsets: ["latin"], variable: "--font-kantumruy", display: "optional" });
-const koulen = Koulen({ weight: "400", subsets: ["latin"], variable: "--font-koulen", preload: false, display: "optional" });
+// swap: Koulen Latin only styles the English accent line on /km (5KB), so a late swap is harmless there.
+const koulen = Koulen({ weight: "400", subsets: ["latin"], variable: "--font-koulen", preload: false, display: "swap" });
 
 // Build fails if any route stops being fully static.
 export const ensureStatic = "navigation";
@@ -53,6 +54,12 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
     <html lang={lang} className={`${oswald.variable} ${kantumruy.variable} ${koulen.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* Koulen Khmer (12KB) is above the fold on every page (hero Khmer line); Kantumruy Khmer (57KB) is
+            the body font only on /km, so English pages don't pay for it. */}
+        <link rel="preload" href="/fonts/koulen-khmer-v1.woff2" as="font" type="font/woff2" crossOrigin="" />
+        {lang === "km" && (
+          <link rel="preload" href="/fonts/kantumruy-pro-khmer-v1.woff2" as="font" type="font/woff2" crossOrigin="" />
+        )}
       </head>
       <body>
         <a

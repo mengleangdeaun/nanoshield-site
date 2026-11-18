@@ -44,6 +44,11 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "DENY" },
         ],
       },
+      {
+        // Versioned file names (-v1), so they can be cached for a year; public/ files are otherwise revalidated.
+        source: "/fonts/:file*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
     ];
   },
 };

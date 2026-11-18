@@ -31,12 +31,30 @@
 /* `light:` variant, mirroring the light-theme selector above (toggle icon, header logo). */
 @custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
 
-/* Khmer glyphs aren't in Oswald, so the browser falls through to Koulen per glyph;
-   Koulen's Khmer file only downloads when Khmer display text is on the page. */
+/* Khmer faces are self-hosted at stable URLs (public/fonts, OFL) so the layout can preload them per locale;
+   next/font can only preload one set for every page. `swap` (not `optional`) so Khmer readers always get the
+   brand font: preloaded, it usually arrives before first paint. Bump the -v1 suffix if a file changes. */
+@font-face {
+  font-family: "NS Kantumruy Khmer";
+  src: url("/fonts/kantumruy-pro-khmer-v1.woff2") format("woff2");
+  font-weight: 100 700;
+  font-display: swap;
+  unicode-range: U+1780-17FF, U+19E0-19FF, U+200C-200D, U+25CC;
+}
+@font-face {
+  font-family: "NS Koulen Khmer";
+  src: url("/fonts/koulen-khmer-v1.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+1780-17FF, U+19E0-19FF, U+200C-200D, U+25CC;
+}
+
+/* Each stack covers Khmer first (the faces above only hold Khmer glyphs), then falls through to the
+   next/font Latin faces for everything else. next/font's own Khmer faces are never reached, so never downloaded. */
 @theme inline {
-  --font-display: var(--font-oswald), var(--font-koulen), "Arial Narrow", sans-serif;
-  --font-body: var(--font-kantumruy), "Noto Sans Khmer", sans-serif;
-  --font-khmer: var(--font-koulen), var(--font-kantumruy), sans-serif;
+  --font-display: var(--font-oswald), "NS Koulen Khmer", "Arial Narrow", sans-serif;
+  --font-body: "NS Kantumruy Khmer", var(--font-kantumruy), "Noto Sans Khmer", sans-serif;
+  --font-khmer: "NS Koulen Khmer", var(--font-koulen), "NS Kantumruy Khmer", var(--font-kantumruy), sans-serif;
 }
 
 @layer base {
