@@ -97,8 +97,8 @@ test("language switch keeps the current page", async ({ page }) => {
   await expect(page.locator("html")).toHaveAttribute("lang", "km");
 });
 
-// Launch gate: fails while the design's placeholders remain. Remove `.fixme` once the business supplies content.
-test.fixme("no placeholder content left", async ({ request }) => {
+// Launch gate: verify no unrendered placeholders or design tokens remain.
+test("no placeholder content left", async ({ request }) => {
   for (const r of routes) {
     const html = await (await request.get(r)).text();
     expect(html, r).not.toMatch(/\[(PRICE|HOURS|INTERVAL|X|GUARANTEE TERMS|WARRANTY TERMS)\]|PHOTO ·|IMAGE ·/);

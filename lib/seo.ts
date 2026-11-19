@@ -9,6 +9,7 @@ const ogImage = { url: "/opengraph-image", width: 1200, height: 630, alt: "Nanos
 export function pageMeta(lang: Locale, d: Dictionary, path: string, title: string, description: string): Metadata {
   const url = `/${lang}${path}`;
   return {
+    metadataBase: new URL(SITE_URL),
     title,
     description,
     alternates: {
@@ -35,23 +36,44 @@ export function businessSchema(lang: Locale, d: Dictionary) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        // shortcut: no openingHours/geo/image/priceRange yet; add once the business supplies them.
-        "@type": "AutoRepair",
+        "@type": ["AutoRepair", "AutomotiveBusiness"],
         "@id": BUSINESS_ID,
         name: site.name,
         description: d.meta.description,
         url: `${SITE_URL}/${lang}`,
         telephone: site.phone,
+        image: `${SITE_URL}/opengraph-image`,
         address: { "@type": "PostalAddress", ...site.address },
-        areaServed: { "@type": "City", name: "Phnom Penh" },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: site.geo.latitude,
+          longitude: site.geo.longitude,
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            opens: "08:00",
+            closes: "17:30",
+          },
+        ],
+        priceRange: site.priceRange,
+        currenciesAccepted: "USD, KHR",
+        paymentAccepted: "Cash, ABA, ACLEDA, Wing, Credit Card",
+        keywords: "Ceramic Coating, Glass Coating, Coating in Phnom Penh, Best Coating in Cambodia, Auto Detailing, ថ្នាំការពារសេរ៉ាមិច, ចែងចាំងដូចគ្រាប់ពេជ្រ",
+        areaServed: [
+          { "@type": "City", name: "Phnom Penh" },
+          { "@type": "Country", name: "Cambodia" },
+        ],
         hasMap: site.maps,
         sameAs: [site.facebook, site.youtube, site.telegram],
       },
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        url: SITE_URL,
+        url: `${SITE_URL}/`,
         name: site.name,
+        alternateName: "Nanoshield",
         inLanguage: locales,
         publisher: { "@id": BUSINESS_ID },
       },

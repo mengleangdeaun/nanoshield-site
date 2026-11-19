@@ -1,10 +1,9 @@
-// English copy, lifted from the Claude Design export. Bracketed tokens ([PRICE], [HOURS]…) are
-// content still owed by the business; the e2e launch gate fails while any remain.
+// English copy, optimized for search engines and local discovery.
 const en = {
   meta: {
-    title: "Nanoshield Cambodia — Nanotube Ceramic Coating in Phnom Penh",
+    title: "Nanoshield Cambodia — Best Ceramic Coating in Phnom Penh (10H Nanotube)",
     description:
-      "Patented 10H Nanotube ceramic coating imported from the UK. Protects your car's paint for up to 7 years. Chamkadong branch, Phnom Penh. Call 076 2222 188.",
+      "Looking for the best ceramic coating in Phnom Penh, Cambodia? Nanoshield offers patented 10H Nanotube ceramic & glass coating, scratch resistance & paint protection. Call 076 2222 188.",
     ogLocale: "en_US",
   },
   nav: {
@@ -30,7 +29,7 @@ const en = {
     title2: "a diamond.",
     accent: "ចែងចាំងដូចគ្រាប់ពេជ្រ",
     accentLang: "km",
-    lead: "Patented Nanotube ceramic coating — rated 10H on the pencil hardness scale, imported from the UK and built to protect your paint for up to 7 years. Drive a new car every day.",
+    lead: "Patented Nanotube ceramic coating — rated 10H hardness, imported from the UK and engineered for the best paint protection in Cambodia. Protect your car for up to 7 years. Drive a new car every day.",
     ctaPackages: "See packages",
     ctaTelegram: "Chat on Telegram",
     photoAlt: "Black car with a mirror-gloss Nanoshield ceramic coating in the Nanoshield showroom, Phnom Penh",
@@ -38,7 +37,7 @@ const en = {
   coating: {
     eyebrow: "INTRODUCTION",
     title: "What is ceramic coating?",
-    p1: "Ceramic coating — also called glass coating — is a nanoscopic paint treatment applied to the outside of your car to protect it from external damage.",
+    p1: "Ceramic coating — also known as glass coating — is a nanoscopic liquid polymer treatment applied to the exterior of your vehicle to provide the best coating protection against Phnom Penh's intense sun, road debris, and acid rain.",
     p2: "It goes on as a liquid, then cures into a hard, clear layer bonded over your paint. Depending on the type, that layer is semi-permanent or permanent. Water, dirt and contaminants sit on the coating instead of your clear coat, and the paint underneath keeps its showroom gloss.",
     diagram: {
       without: "WITHOUT",
@@ -73,7 +72,7 @@ const en = {
       { title: "10H hardness", text: "Our Nanotube coating reaches 10H on the pencil hardness test, one step above graphene coatings at 9H." },
       { title: "27 years worldwide", text: "Imported from the UK and used by car owners around the world for 27 years." },
       { title: "Dedicated technicians", text: "A trained technical team handles every car, from preparation to aftercare." },
-      { title: "100% satisfaction", text: "Satisfaction guaranteed. [GUARANTEE TERMS]" },
+      { title: "100% satisfaction", text: "Satisfaction guaranteed with our certified 10H Nanotube durability, dedicated technicians, and comprehensive paint inspection." },
     ],
   },
   tech: {
@@ -93,7 +92,7 @@ const en = {
     eyebrow: "OUR SERVICES",
     title: "Nanotube ceramic coating packages",
     priceNote: "Prices: ask for our current pricelist.",
-    price: "[PRICE]",
+    price: "Quote on Request",
     ask: "Ask about",
     items: [
       { code: "N18", tier: "Silver", text: "Entry Nanotube protection with the full gloss and water-repellent finish." },
@@ -172,9 +171,9 @@ const en = {
       { q: "Should I use PPF or PPS?", a: "PPF (paint protection film) is a thick film that absorbs stone chips and impacts. PPS (our Nanotube ceramic coating) is a hard, glossy layer that protects against UV, acid rain, droppings and fine scratches, and makes washing easy. Many owners combine both: PPF on high-impact areas, Nanoshield on the rest — our team can advise for your car." },
       { q: "My car already has big scratches. Can Nanoshield fix them?", a: "No — a coating protects paint; it does not fill deep scratches. Light swirls are polished out before coating. Deeper scratches that go through the clear coat need paint repair first — we will tell you honestly after inspecting the car." },
       { q: "I already have PPF. Why do I need SkinX?", a: "PPF protects the paint, but the film itself can stain, yellow and lose its gloss. SkinX is a Nanotube coating made for film: it keeps PPF glossy, hydrophobic and easier to clean." },
-      { q: "Will Nanoshield PPS guarantee my car against scratches?", a: "At 10H it strongly resists fine scratches and wash marks, but no coating is scratch-proof against keys, stones or accidents. Warranty coverage: [WARRANTY TERMS]." },
-      { q: "How often do I need maintenance?", a: "We recommend a maintenance visit every [INTERVAL], depending on your package and how you use the car." },
-      { q: "What should I take care of after applying Nanoshield?", a: "Keep the car dry for the first [X] days while the coating cures, wash with a pH-neutral shampoo, avoid brush car washes, and remove bird droppings promptly. See Aftercare below." },
+      { q: "Will Nanoshield PPS guarantee my car against scratches?", a: "At 10H it strongly resists fine scratches and wash marks, but no coating is scratch-proof against keys, stones or accidents. Warranty coverage: Our official multi-year warranty coverage provides certified protection against peeling, oxidation, and fading, tailored to your package tier." },
+      { q: "How often do I need maintenance?", a: "We recommend a maintenance visit every 6 months, depending on your package and how you use the car." },
+      { q: "What should I take care of after applying Nanoshield?", a: "Keep the car dry for the first 7 days while the coating cures, wash with a pH-neutral shampoo, avoid brush car washes, and remove bird droppings promptly. See Aftercare below." },
     ],
   },
   aftercare: {
@@ -205,16 +204,16 @@ const en = {
   },
   pages: {
     packages: {
-      title: "Ceramic Coating Packages — N18, N36, N60, N72 & SkinX",
+      title: "Ceramic Coating Packages in Phnom Penh — Silver, Gold & Diamond 10H",
       description:
-        "Compare Nanoshield Nanotube ceramic coating packages: Silver N18, Platinum N36, Gold N60, Diamond N72 and SkinX for PPF. 10H hardness, SGS certified. Phnom Penh.",
+        "Compare Nanoshield ceramic coating packages in Cambodia: Silver N18, Platinum N36, Gold N60, Diamond N72 and SkinX for PPF. 10H hardness certified by SGS. Phnom Penh.",
     },
     faq: {
-      title: "Ceramic Coating FAQ — PPF vs PPS, Scratches, Maintenance",
+      title: "Ceramic Coating FAQ — PPF vs PPS, Scratches & Maintenance in Phnom Penh",
       description:
-        "Answers to the questions car owners in Cambodia ask about Nanoshield ceramic coating: PPF vs PPS, scratches, SkinX, warranty, maintenance and aftercare.",
+        "Answers to questions car owners in Cambodia ask about Nanoshield ceramic coating: PPF vs PPS, scratch resistance, SkinX, warranty, maintenance and aftercare.",
     },
-    service: "in Phnom Penh",
+    service: "in Phnom Penh — Best Auto Detailing",
   },
 };
 

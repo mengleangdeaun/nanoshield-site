@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Kantumruy_Pro, Koulen, Oswald } from "next/font/google";
+import { Kantumruy_Pro, Oswald } from "next/font/google";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/content";
 import { SITE_URL, locales, site } from "@/content/site";
@@ -12,8 +12,6 @@ import "../globals.css";
 // Khmer faces live in public/fonts and are preloaded per locale below (see globals.css).
 const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald", display: "optional" });
 const kantumruy = Kantumruy_Pro({ subsets: ["latin"], variable: "--font-kantumruy", display: "optional" });
-// swap: Koulen Latin only styles the English accent line on /km (5KB), so a late swap is harmless there.
-const koulen = Koulen({ weight: "400", subsets: ["latin"], variable: "--font-koulen", preload: false, display: "swap" });
 
 // Build fails if any route stops being fully static.
 export const ensureStatic = "navigation";
@@ -40,6 +38,14 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     title: { default: d.meta.title, template: `%s | ${site.name}` },
     description: d.meta.description,
     applicationName: site.name,
+    // Served from public/ so URLs stay unhashed: Google needs a stable favicon URL across deploys.
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: "/apple-icon.png",
+    },
     formatDetection: { telephone: false },
   };
 }
@@ -51,12 +57,12 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
 
   return (
     // suppressHydrationWarning: themeScript sets data-theme on <html> before React hydrates.
-    <html lang={lang} className={`${oswald.variable} ${kantumruy.variable} ${koulen.variable}`} suppressHydrationWarning>
+    <html lang={lang} className={`${oswald.variable} ${kantumruy.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        {/* Koulen Khmer (12KB) is above the fold on every page (hero Khmer line); Kantumruy Khmer (57KB) is
-            the body font only on /km, so English pages don't pay for it. */}
-        <link rel="preload" href="/fonts/koulen-khmer-v1.woff2" as="font" type="font/woff2" crossOrigin="" />
+        {/* Noto Sans Khmer (variable 400-700) is above the fold on every page (hero Khmer line); Kantumruy Khmer
+            (57KB) is the body font only on /km, so English pages don't pay for it. */}
+        <link rel="preload" href="/fonts/noto-sans-khmer-v1.woff2" as="font" type="font/woff2" crossOrigin="" />
         {lang === "km" && (
           <link rel="preload" href="/fonts/kantumruy-pro-khmer-v1.woff2" as="font" type="font/woff2" crossOrigin="" />
         )}

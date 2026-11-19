@@ -1,6 +1,6 @@
 Self-hosted font subsets (Khmer), downloaded unchanged from Google Fonts.
 kantumruy-pro-khmer-v1.woff2 - Kantumruy Pro, Copyright 2022 The Kantumruy Pro Project Authors (https://github.com/googlefonts/kantumruy)
-koulen-khmer-v1.woff2 - Koulen, Copyright 2019 The Koulen Project Authors (https://github.com/danhhong/Koulen)
+noto-sans-khmer-v1.woff2 - Noto Sans Khmer, Copyright 2022 The Noto Project Authors (https://github.com/notofonts/khmer)
 
 Both are licensed under the SIL Open Font License, Version 1.1:
 

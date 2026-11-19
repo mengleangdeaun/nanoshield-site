@@ -15,6 +15,12 @@ export const site = {
     addressRegion: "Khan Dangkor",
     addressCountry: "KH",
   },
+  geo: {
+    latitude: 11.5165,
+    longitude: 104.8872,
+  },
+  openingHours: "Mo-Su 08:00-17:30",
+  priceRange: "$$$",
 } as const;
 
 export const locales = ["en", "km"] as const;

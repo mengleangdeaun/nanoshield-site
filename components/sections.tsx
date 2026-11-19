@@ -1,14 +1,14 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import bacteriaCleaning from "@/public/images/bacteria-cleaning.webp";
-import beforeAfter01 from "@/public/images/before-after-01.jpg";
-import beforeAfter02 from "@/public/images/before-after-02.jpg";
-import beforeAfter03 from "@/public/images/before-after-03.jpg";
-import beforeAfter04 from "@/public/images/before-after-04.jpg";
+import beforeAfter01 from "@/public/images/before-after-01.webp";
+import beforeAfter02 from "@/public/images/before-after-02.webp";
+import beforeAfter03 from "@/public/images/before-after-03.webp";
+import beforeAfter04 from "@/public/images/before-after-04.webp";
 import glassCoating from "@/public/images/glass-coating.webp";
 import leatherCoating from "@/public/images/leather-coating.webp";
-import pencilTest from "@/public/images/PENCIL HARDNESS TEST.png";
-import sgsCert from "@/public/images/SGS CERTIFICATE.png";
+import pencilTest from "@/public/images/PENCIL-HARDNESS-TEST.webp";
+import sgsCert from "@/public/images/SGS-CERTIFICATE.webp";
 import showroom from "@/public/images/showroom.webp";
 import steamWash from "@/public/images/steam-wash.webp";
 import type { Dictionary, Locale } from "@/content";
@@ -51,7 +51,7 @@ export function Hero({ d, lang }: P) {
             <br />
             <span className="text-orange">{h.title2}</span>
           </h1>
-          <p lang={h.accentLang} className="m-0 font-khmer text-[clamp(32px,4vw,56px)] leading-[1.4]">
+          <p lang={h.accentLang} className="m-0 font-display text-[clamp(32px,4vw,56px)] leading-[1.4]">
             {h.accent}
           </p>
           <p className="m-0 max-w-[520px] text-xl leading-[34px] text-muted">{h.lead}</p>
@@ -359,7 +359,7 @@ export function Visit({ d }: P) {
       <div className="wrap section-y flex flex-wrap gap-14">
         <div className="flex min-w-0 flex-[1_1_420px] flex-col gap-6">
           <Head eyebrow={v.eyebrow} title={v.title} />
-          <p lang="km" className="m-0 font-khmer text-4xl leading-[1.4]">
+          <p lang="km" className="m-0 font-display text-4xl leading-[1.4]">
             ចែងចាំងដូចគ្រាប់ពេជ្រ
           </p>
           <div className="flex flex-col gap-1">
