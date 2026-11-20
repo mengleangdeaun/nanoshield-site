@@ -6,7 +6,7 @@ export const site = {
   phone: "+855762222188",
   phoneDisplay: "076 2222 188",
   telegram: "https://t.me/NanoshieldCeramic",
-  maps: "https://maps.app.goo.gl/nEmM1kXBukdYmPY46",
+  maps: "https://maps.app.goo.gl/SJHQmAzMoPQMs73K6",
   facebook: "https://www.facebook.com/nanoshieldcambodia/",
   youtube: "https://www.youtube.com/@NanoshieldCambodia",
   address: {
@@ -16,8 +16,8 @@ export const site = {
     addressCountry: "KH",
   },
   geo: {
-    latitude: 11.5165,
-    longitude: 104.8872,
+    latitude: 11.520031205054028,
+    longitude: 104.88901071724469,
   },
   openingHours: "Mo-Su 08:00-17:30",
   priceRange: "$$$",
